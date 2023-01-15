@@ -1,0 +1,16 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon --watch './**/*.ts' --exec 'node --experimental-specifier-resolution=node --loader @esbuild-kit/esm-loader' src/index.ts",
+    "build": "npm run build:clean && npm run build:es",
+    "build:es": "esbuild src/index.ts --bundle --minify --platform=node --outfile=./dist/bundle.cjs",
+    "build:clean": "rm -rf ./dist",
+    "start": "node ./dist/bundle.cjs"
+  },
+  "devDependencies": {
+    "@esbuild-kit/esm-loader": "^2.5.4",
+    "esbuild": "^0.17.0",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.3"
+  }
+}
